@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace WPF_Lists
 {
@@ -33,7 +35,14 @@ namespace WPF_Lists
                 }
             };
 
-            List_Phones.ItemsSource = _phones;
+            List_Phones.ItemsSource = _phones.Select(phone => phone.Name);
+        }
+
+        private void List_Phones_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected_index = (sender as ListBox).SelectedIndex;
+            var phone = _phones[selected_index];
+            Output.Content = $"{phone.Name} {phone.Manufactured} - {phone.Price}";
         }
     }
 }
