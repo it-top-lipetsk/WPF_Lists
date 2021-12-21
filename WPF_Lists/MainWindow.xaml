@@ -45,8 +45,10 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="Button_Add" Content="Добавить"
-                    Style="{StaticResource Style_Button}"/>
+                    Style="{StaticResource Style_Button}"
+                    Click="Button_Add_OnClick"/>
             <Button x:Name="Button_Del" Content="Удалить" IsEnabled="False"
+                    Click="Button_Del_OnClick"
                     Style="{StaticResource Style_Button}"/>
         </StackPanel>
     </StackPanel>

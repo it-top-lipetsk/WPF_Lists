@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -6,13 +7,13 @@ namespace WPF_Lists
 {
     public partial class MainWindow : Window
     {
-        private List<Phone> _phones;
+        private ObservableCollection<Phone> _phones;
         
         public MainWindow()
         {
             InitializeComponent();
 
-            _phones = new List<Phone>
+            _phones = new ObservableCollection<Phone>
             {
                 new Phone()
                 {
@@ -39,10 +40,23 @@ namespace WPF_Lists
 
         private void List_Phones_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var selected_index = (sender as ListBox).SelectedIndex;
-            var phone = _phones[selected_index];
-            
-            Output.Content = $"{phone.Name} {phone.Manufactured} - {phone.Price}";
+            Button_Del.IsEnabled = true;
+        }
+
+        private void Button_Add_OnClick(object sender, RoutedEventArgs e)
+        {
+            _phones.Add(new Phone
+            {
+                Name = Input_Name.Text,
+                Manufactured = Input_Manufactured.Text,
+                Price = Convert.ToInt32(Input_Price.Text)
+            });
+        }
+
+        private void Button_Del_OnClick(object sender, RoutedEventArgs e)
+        {
+            var select = List_Phones.SelectedIndex;
+            _phones.RemoveAt(select);
         }
     }
 }
