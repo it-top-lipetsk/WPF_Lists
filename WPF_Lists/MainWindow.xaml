@@ -7,7 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
-        <ListBox Name="List_Phones" SelectionChanged="List_Phones_OnSelectionChanged"/>
+        <ListView Name="List_Phones" 
+                 SelectionChanged="List_Phones_OnSelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Name}">Название</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Manufactured}">Производитель</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
         <Label x:Name="Output"/>
     </StackPanel>
 </Window>

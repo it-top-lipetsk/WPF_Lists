@@ -35,7 +35,7 @@ namespace WPF_Lists
                 }
             };
 
-            List_Phones.ItemsSource = _phones.Select(phone => phone.Name);
+            List_Phones.ItemsSource = _phones;
         }
 
         private void List_Phones_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
