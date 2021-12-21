@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -42,6 +41,7 @@ namespace WPF_Lists
         {
             var selected_index = (sender as ListBox).SelectedIndex;
             var phone = _phones[selected_index];
+            
             Output.Content = $"{phone.Name} {phone.Manufactured} - {phone.Price}";
         }
     }
